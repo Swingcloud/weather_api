@@ -1,4 +1,4 @@
-defmodule WeatherApiMoxTest do
+defmodule WeatherApiHammoxTest do
   use ExUnit.Case, async: true
 
   alias WeatherApi.HttpClientMock
