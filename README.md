@@ -1,21 +1,9 @@
 # WeatherApi
 
-**TODO: Add description**
+This is the example for using the different elixir mocking library for test,
+list the sample of when and how to use these mocking libraries:
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `weather_api` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:weather_api, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/weather_api](https://hexdocs.pm/weather_api).
-
+- [mock](https://github.com/jjh42/mock)
+- [mox](https://github.com/dashbitco/mox)
+- [hammox](https://github.com/msz/hammox)
+- [bypass](https://github.com/PSPDFKit-labs/bypass)
