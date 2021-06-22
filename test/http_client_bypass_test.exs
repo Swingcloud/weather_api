@@ -25,7 +25,7 @@ defmodule WeatherApi.HttpClientBypassTest do
     end)
 
     assert {:ok, %{"error" => %{"code" => 1006, "message" => "No matching location found."}}} =
-             WeatherApi.HttpClient.get_current_weather("hongkong")
+             HttpClient.get_current_weather("hongkong")
   end
 
   test "client can get the success response", %{bypass: bypass} do
@@ -116,6 +116,6 @@ defmodule WeatherApi.HttpClientBypassTest do
                 "region" => "",
                 "tz_id" => "Asia/Hong_Kong"
               }
-            }} = WeatherApi.HttpClient.get_current_weather("hongkong")
+            }} = HttpClient.get_current_weather("hongkong")
   end
 end
