@@ -8,6 +8,7 @@ defmodule WeatherApi.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {Finch, name: WeatherApi.HttpClient}
       # Starts a worker by calling: WeatherApi.Worker.start_link(arg)
       # {WeatherApi.Worker, arg}
     ]
