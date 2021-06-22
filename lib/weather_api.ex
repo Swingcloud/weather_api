@@ -3,16 +3,10 @@ defmodule WeatherApi do
   Documentation for `WeatherApi`.
   """
 
-  @doc """
-  Hello world.
+  @http_client Application.compile_env(:weather_api, :http_client)
 
-  ## Examples
-
-      iex> WeatherApi.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  @spec get_current_weather(city :: String.t()) :: {:ok, map()} | {:error, term()}
+  def get_current_weather(city) do
+    @http_client.get_current_weather(city)
   end
 end
