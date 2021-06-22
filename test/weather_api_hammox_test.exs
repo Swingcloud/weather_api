@@ -3,7 +3,7 @@ defmodule WeatherApiMoxTest do
 
   alias WeatherApi.HttpClientMock
 
-  import Mox
+  import Hammox
 
   setup :verify_on_exit!
 
@@ -59,14 +59,14 @@ defmodule WeatherApiMoxTest do
               }} = WeatherApi.get_current_weather("hongkong")
     end
 
-    test "mox doesn check the type of the argument" do
+    test "hammox will check the type of the argument" do
       HttpClientMock
-      |> expect(:get_current_weather, fn city ->
-        assert city == 123
+      |> expect(:get_current_weather, fn _city ->
         expected_response()
       end)
 
-      assert expected_response() == WeatherApi.get_current_weather(123)
+      assert catch_error(WeatherApi.get_current_weather(123)) == %Hammox.TypeMatchError{message: "\n1st argument value 123 does not match 1st parameter's type String.t() (\"city\").\n  Value 123 does not match type <<_::_*8>>."}
+
     end
   end
 
