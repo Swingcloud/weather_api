@@ -59,7 +59,7 @@ defmodule WeatherApiMoxTest do
               }} = WeatherApi.get_current_weather("hongkong")
     end
 
-    test "mox doesn check the type of the argument" do
+    test "mox doesn't check the type of the argument" do
       HttpClientMock
       |> expect(:get_current_weather, fn city ->
         assert city == 123
@@ -67,6 +67,15 @@ defmodule WeatherApiMoxTest do
       end)
 
       assert expected_response() == WeatherApi.get_current_weather(123)
+    end
+
+    test "mox doesn't check the output" do
+      HttpClientMock
+      |> expect(:get_current_weather, fn city ->
+        {true, true}
+      end)
+
+      assert {true, true} == WeatherApi.get_current_weather(123)
     end
   end
 

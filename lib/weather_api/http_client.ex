@@ -1,5 +1,5 @@
 defmodule WeatherApi.HttpClientBehaviour do
-  @callback get_current_weather(city :: String.t()) :: term()
+  @callback get_current_weather(city :: String.t()) :: {:ok, map} | {:error, term()}
 end
 
 defmodule WeatherApi.HttpClient do
