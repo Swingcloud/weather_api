@@ -9,4 +9,8 @@ defmodule WeatherApi do
   def get_current_weather(city) do
     @http_client.get_current_weather(city)
   end
+
+  def get_current_weather(city, http_client) do
+    http_client.get_current_weather(city)
+  end
 end

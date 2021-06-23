@@ -65,8 +65,10 @@ defmodule WeatherApiHammoxTest do
         expected_response()
       end)
 
-      assert catch_error(WeatherApi.get_current_weather(123)) == %Hammox.TypeMatchError{message: "\n1st argument value 123 does not match 1st parameter's type String.t() (\"city\").\n  Value 123 does not match type <<_::_*8>>."}
-
+      assert catch_error(WeatherApi.get_current_weather(123)) == %Hammox.TypeMatchError{
+               message:
+                 "\n1st argument value 123 does not match 1st parameter's type String.t() (\"city\").\n  Value 123 does not match type <<_::_*8>>."
+             }
     end
   end
 
