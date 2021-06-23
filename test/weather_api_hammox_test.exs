@@ -70,6 +70,18 @@ defmodule WeatherApiHammoxTest do
                  "\n1st argument value 123 does not match 1st parameter's type String.t() (\"city\").\n  Value 123 does not match type <<_::_*8>>."
              }
     end
+
+    test "hammox will check the type of the output" do
+      HttpClientMock
+      |> expect(:get_current_weather, fn _city ->
+        {true, true}
+      end)
+
+      assert catch_error(WeatherApi.get_current_weather("hk")) == %Hammox.TypeMatchError{
+        __exception__: true,
+        message: "\nReturned value {true, true} does not match type {:ok, map()} | {:error, term()}.\n  Value {true, true} does not match type {:ok, map()} | {:error, term()}.\n    1st tuple element true does not match 1st element type :error.\n      Value true does not match type :error."
+      }
+    end
   end
 
   def expected_response do
